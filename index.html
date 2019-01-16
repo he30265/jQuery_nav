@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery_二级三级导航效果</title>
+
+</head>
+
+<body>
+
+<div class="nav">
+    <div class="wrap">
+        <ul class="first_ul">
+            <li class="first_li">
+                <a href="" class="first_a">首页</a>
+            </li>
+            <li class="first_li">
+                <a href="" class="first_a">栏目一</a>
+                <ul class="second_ul">
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目1</a>
+                    </li>
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目2</a>
+                    </li>
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目3</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="first_li">
+                <a href="" class="first_a">栏目二</a>
+            </li>
+            <li class="first_li">
+                <a href="" class="first_a">栏目三</a>
+                <ul class="second_ul">
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目1</a>
+                    </li>
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目2</a>
+                        <ul class="third_ul">
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目1</a>
+                            </li>
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目2</a>
+                            </li>
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="second_li">
+                        <a href="" class="second_a">二级栏目3</a>
+                        <ul class="third_ul">
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目1</a>
+                            </li>
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目2</a>
+                            </li>
+                            <li class="third_li">
+                                <a href="" class="third_a">三级栏目3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>
+
+<style>
+* { margin: 0; padding: 0; }
+ul, li { list-style: none; }
+a { -webkit-transition: all .3s; transition: all .3s; text-decoration: none; outline: none; }
+.clear { clear: both; overflow: hidden; width: 100%; height: 0; }
+.wrap { width: 1200px; margin: 0 auto; }
+.nav { background-color: #105cb4; }
+.first_li { position: relative; float: left; width: 160px; }
+.first_a { line-height: 40px; display: block; height: 40px; text-align: center; color: #fff; border-left: 1px solid #fff; }
+.first_a:hover { background-color: #074186; }
+.second_ul { position: absolute; z-index: 1; top: 40px; left: 0; display: none; width: 100%; }
+.second_a { line-height: 40px; display: block; height: 40px; text-align: center; color: #fff; border-top: 1px solid #fff; background-color: #105cb4; }
+.second_a:hover { background-color: #074186; }
+.third_ul { display: none; }
+.have_third .second_a { position: relative; }
+.have_third .sa_ico { position: absolute; top: 0; right: 0; width: 40px; height: 100%; background-image: url(ico01.png); background-repeat: no-repeat; background-position: center; }
+.third_a { line-height: 30px; display: block; height: 30px; text-align: center; color: #333; background-color: #ececec; }
+.third_a:hover { background-color: #cecece; }
+</style>
+
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+$(function() {
+    $(".third_ul").parent().addClass('have_third');
+    $(".have_third .second_a").append('<span class="sa_ico"></span>');
+
+    $(".first_a").mouseenter(function(event) {
+        $(this).next(".second_ul").stop(false, true).slideDown(400);
+    });
+    $(".first_li").mouseleave(function(event) {
+        $(this).children(".second_ul").stop(false, true).slideUp(400);
+    });
+    $(".second_a").click(function(event) {
+        event.preventDefault();
+        $(this).next('.third_ul').stop(false, true).slideToggle(400);
+    });
+});
+</script>
+
+
+
+</body>
+
+</html>
