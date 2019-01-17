@@ -96,22 +96,23 @@ a { -webkit-transition: all .3s; transition: all .3s; text-decoration: none; out
 <script src="jquery-1.8.3.min.js"></script>
 <script>
 $(function() {
-    $(".third_ul").parent().addClass('have_third');
-    $(".have_third .second_a").append('<span class="sa_ico"></span>');
-
     $(".first_a").mouseenter(function(event) {
         $(this).next(".second_ul").stop(false, true).slideDown(400);
     });
     $(".first_li").mouseleave(function(event) {
         $(this).children(".second_ul").stop(false, true).slideUp(400);
     });
-    $(".second_a").click(function(event) {
+
+    // 三级导航效果
+    $(".third_ul").parent().addClass('have_third');
+    $(".have_third .second_a").append('<span class="sa_ico"></span>');
+    $(".have_third .second_a").click(function(event) {
         event.preventDefault();
         $(this).next('.third_ul').stop(false, true).slideToggle(400);
     });
+
 });
 </script>
-
 
 
 </body>
